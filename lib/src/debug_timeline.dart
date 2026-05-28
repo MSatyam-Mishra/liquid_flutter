@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:liquid_core/liquid_core.dart';
+
+import 'core/diagnostics.dart';
 
 class LiquidDebugTimeline extends ChangeNotifier implements LiquidObserver {
   LiquidDebugTimeline({this.maxEvents = 300})

@@ -80,12 +80,6 @@
       "languageVersion": "3.8"
     },
     {
-      "name": "liquid_core",
-      "rootUri": "../../liquid_core",
-      "packageUri": "lib/",
-      "languageVersion": "3.10"
-    },
-    {
       "name": "matcher",
       "rootUri": "file:///C:/Users/satya/AppData/Local/Pub/Cache/hosted/pub.dev/matcher-0.12.17",
       "packageUri": "lib/",
@@ -164,7 +158,7 @@
       "languageVersion": "3.5"
     },
     {
-      "name": "liquid_flutter",
+      "name": "liquidx",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.10"

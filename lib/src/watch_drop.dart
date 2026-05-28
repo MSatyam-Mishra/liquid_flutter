@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:liquid_core/liquid_core.dart';
+
+import 'core/drop.dart';
 
 typedef WatchDropBuilder<T> = Widget Function(
   BuildContext context,

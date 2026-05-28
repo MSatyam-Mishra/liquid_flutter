@@ -1,8 +1,8 @@
-name: liquid_flutter
-description: Flutter state management for Liquid, built for Onion Architecture with Drop, Flow, Tub, Ripple, and StreamDrop.
+name: liquidx
+description: A fluid, reactive state management framework enforcing Onion Architecture. Isolate UI and domain logic using Drops, Flows, Tubs, and Ripples.
 version: 0.1.0
-repository: https://example.com/liquid
-publish_to: none
+repository: https://github.com/MSatyam-Mishra/liquid/tree/main/packages/liquid_flutter
+homepage: https://github.com/MSatyam-Mishra/liquid
 
 environment:
   sdk: ^3.10.9
@@ -11,8 +11,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  liquid_core:
-    path: ../liquid_core
 
 dev_dependencies:
   flutter_test:

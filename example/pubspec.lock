@@ -99,14 +99,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.0"
-  liquid_core:
-    dependency: transitive
-    description:
-      path: "../../liquid_core"
-      relative: true
-    source: path
-    version: "0.1.0"
-  liquid_flutter:
+  liquidx:
     dependency: "direct main"
     description:
       path: ".."

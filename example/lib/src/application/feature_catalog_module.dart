@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:liquid_flutter/liquid_flutter.dart' as liquid;
+import 'package:liquidx/liquidx.dart' as liquid;
 
 import '../domain/feature_demo.dart';
 
@@ -12,7 +12,7 @@ class FeatureCatalogModule {
         searchQuery = liquid.Drop<String>('', label: 'search_query'),
         folderDepthCount = liquid.Drop<int>(1, label: 'folder_depth_count'),
         editorCharacterCount = liquid.Drop<int>(0, label: 'editor_char_count'),
-        streamCounter = liquid.StreamDrop<int>(label: 'stream_counter'),
+        streamCounter = liquid.Flow<int>(label: 'stream_counter'),
         rippleCount = liquid.Drop<int>(0, label: 'ripple_count'),
         baseCount = liquid.Drop<int>(0, label: 'base_count') {
     ripple = liquid.Ripple(
@@ -30,7 +30,7 @@ class FeatureCatalogModule {
   final liquid.Drop<String> searchQuery;
   final liquid.Drop<int> folderDepthCount;
   final liquid.Drop<int> editorCharacterCount;
-  final liquid.StreamDrop<int> streamCounter;
+  final liquid.Flow<int> streamCounter;
   final liquid.Drop<int> rippleCount;
   late final liquid.Ripple ripple;
 
@@ -44,8 +44,8 @@ class FeatureCatalogModule {
     FeatureDefinition(
       feature: LiquidFeature.flow,
       title: 'Flow',
-      description: 'Derived counter state (double + triple) with memoized recompute.',
-      whereToUse: 'Use when one value must be computed from other states without manual syncing.',
+      description: 'Async counter loading state (idle/loading/data/error).',
+      whereToUse: 'Use for API calls, async initialization, and stream/listener-driven state.',
     ),
     FeatureDefinition(
       feature: LiquidFeature.tub,
@@ -61,9 +61,9 @@ class FeatureCatalogModule {
     ),
     FeatureDefinition(
       feature: LiquidFeature.streamDrop,
-      title: 'StreamDrop',
-      description: 'Async counter loading state (loading/data/error).',
-      whereToUse: 'Use for API calls, async initialization, and stream/listener-driven state.',
+      title: 'Pool',
+      description: 'Derived counter state (double + triple) with memoized recompute.',
+      whereToUse: 'Use when one value must be computed from other states without manual syncing.',
     ),
     FeatureDefinition(
       feature: LiquidFeature.nestedState,
@@ -97,17 +97,17 @@ class FeatureCatalogModule {
     ),
   ];
 
-  late final liquid.Flow<int> doubled = liquid.Flow<int>(
+  late final liquid.Pool<int> doubled = liquid.Pool<int>(
     () => baseCount.value * 2,
     label: 'doubled_count',
   );
 
-  late final liquid.Flow<int> tripled = liquid.Flow<int>(
+  late final liquid.Pool<int> tripled = liquid.Pool<int>(
     () => baseCount.value * 3,
     label: 'tripled_count',
   );
 
-  late final liquid.Flow<List<int>> searchResults = liquid.Flow<List<int>>(() {
+  late final liquid.Pool<List<int>> searchResults = liquid.Pool<List<int>>(() {
     final String query = searchQuery.value.trim();
     final List<int> source = List<int>.generate(baseCount.value + 1, (int index) => index);
     if (query.isEmpty) {
@@ -116,12 +116,12 @@ class FeatureCatalogModule {
     return source.where((int value) => value.toString().contains(query)).toList(growable: false);
   }, label: 'search_results');
 
-  late final liquid.Flow<int> nestedTotal = liquid.Flow<int>(
+  late final liquid.Pool<int> nestedTotal = liquid.Pool<int>(
     () => nestedParentCount.value + nestedChildCount.value,
     label: 'nested_total',
   );
 
-  late final liquid.Flow<int> hierarchyTotal = liquid.Flow<int>(
+  late final liquid.Pool<int> hierarchyTotal = liquid.Pool<int>(
     () => baseCount.value * folderDepthCount.value,
     label: 'hierarchy_total',
   );

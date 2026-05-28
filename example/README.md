@@ -1,3 +1,3 @@
-# liquid_flutter_example
+# liquidx_example
 
 A new Flutter project.

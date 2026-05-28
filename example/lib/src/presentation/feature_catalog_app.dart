@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:liquid_flutter/liquid_flutter.dart' as liquid;
+import 'package:liquidx/liquidx.dart' as liquid;
 
 import '../application/feature_catalog_module.dart';
 import '../domain/feature_demo.dart';
@@ -196,28 +196,6 @@ class _FeatureCounterDemoScreenState extends State<FeatureCounterDemoScreen> {
       case LiquidFeature.tub:
         return const Text('Use + and - above. This demo is powered by a Drop inside a Tub scope.');
       case LiquidFeature.flow:
-        return liquid.WatchDrop<int, int>(
-          source: module.doubled,
-          select: (int value) => value,
-          builder: (BuildContext context, int doubled, Widget? child) {
-            return liquid.WatchDrop<int, int>(
-              source: module.tripled,
-              select: (int value) => value,
-              builder: (BuildContext context, int tripled, Widget? child) {
-                return Text('Flow values -> doubled: $doubled, tripled: $tripled');
-              },
-            );
-          },
-        );
-      case LiquidFeature.ripple:
-        return liquid.WatchDrop<int, int>(
-          source: module.rippleCount,
-          select: (int value) => value,
-          builder: (BuildContext context, int fired, Widget? child) {
-            return Text('Ripple fired $fired times from counter changes.');
-          },
-        );
-      case LiquidFeature.streamDrop:
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -243,6 +221,28 @@ class _FeatureCounterDemoScreenState extends State<FeatureCounterDemoScreen> {
               },
             ),
           ],
+        );
+      case LiquidFeature.streamDrop:
+        return liquid.WatchDrop<int, int>(
+          source: module.doubled,
+          select: (int value) => value,
+          builder: (BuildContext context, int doubled, Widget? child) {
+            return liquid.WatchDrop<int, int>(
+              source: module.tripled,
+              select: (int value) => value,
+              builder: (BuildContext context, int tripled, Widget? child) {
+                return Text('Flow values -> doubled: $doubled, tripled: $tripled');
+              },
+            );
+          },
+        );
+      case LiquidFeature.ripple:
+        return liquid.WatchDrop<int, int>(
+          source: module.rippleCount,
+          select: (int value) => value,
+          builder: (BuildContext context, int fired, Widget? child) {
+            return Text('Ripple fired $fired times from counter changes.');
+          },
         );
       case LiquidFeature.nestedState:
         return Column(

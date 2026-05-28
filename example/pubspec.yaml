@@ -1,5 +1,5 @@
-name: liquid_flutter_example
-description: Notes workspace example for liquid_flutter.
+name: liquidx_example
+description: Feature catalog example for liquidx.
 publish_to: none
 
 environment:
@@ -8,7 +8,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  liquid_flutter:
+  liquidx:
     path: ../
 
 dev_dependencies:

@@ -1,14 +1,13 @@
 {
   "roots": [
-    "liquid_flutter"
+    "liquidx"
   ],
   "packages": [
     {
-      "name": "liquid_flutter",
+      "name": "liquidx",
       "version": "0.1.0",
       "dependencies": [
-        "flutter",
-        "liquid_core"
+        "flutter"
       ],
       "devDependencies": [
         "flutter_lints",
@@ -39,11 +38,6 @@
         "test_api",
         "vector_math"
       ]
-    },
-    {
-      "name": "liquid_core",
-      "version": "0.1.0",
-      "dependencies": []
     },
     {
       "name": "flutter",

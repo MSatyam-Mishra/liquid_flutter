@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:liquid_flutter/liquid_flutter.dart';
+import 'package:liquidx/liquidx.dart';
 
 void main() {
   testWidgets('ripple effect reacts to drop changes', (WidgetTester tester) async {

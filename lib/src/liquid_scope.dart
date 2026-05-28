@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:liquid_core/liquid_core.dart';
+
+import 'core/tub.dart';
 
 class LiquidScope extends InheritedWidget {
   const LiquidScope({

@@ -1,5 +1,7 @@
 import 'package:flutter/widgets.dart';
-import 'package:liquid_core/liquid_core.dart';
+
+import 'core/pool.dart';
+import 'core/ripple.dart';
 
 class RippleEffect extends StatefulWidget {
   const RippleEffect({
